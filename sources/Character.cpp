@@ -1,5 +1,12 @@
-//
-// Created by ohadwolfman on 5/10/23.
-//
-
 #include "Character.hpp"
+using namespace std;
+
+namespace ariel{
+
+    void setName(){
+
+    }
+    void setLocation(){
+
+    }
+}

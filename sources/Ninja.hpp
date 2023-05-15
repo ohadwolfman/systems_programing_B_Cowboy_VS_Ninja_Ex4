@@ -1,8 +1,13 @@
-//
-// Created by ohadwolfman on 5/10/23.
-//
-
 #ifndef CPP_EX4_NINJA_HPP
 #define CPP_EX4_NINJA_HPP
+#include "Character.hpp"
+#include "Point.hpp"
 
+using namespace std;
+
+namespace ariel{
+    class Ninja: public Character{
+
+    };
+}
 #endif //CPP_EX4_NINJA_HPP
