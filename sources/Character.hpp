@@ -15,16 +15,17 @@ namespace ariel{
             position(position),power(power), name(name){};
 
             bool isAlive(){
-                this->power == 0? 0: 1;
+                this->power > 0? 1: 0;
             }
             double distance(Character* other);
+
             void hit(int pointsToDecrease){
                 this->power-=pointsToDecrease;
             }
             string getName(){ return this->name; }
             Point getLocation(){ return this->position; }
-            void setName();
-            void setLocation();
+            void setName(string newName);
+            void setLocation(Point newPoint);
             virtual string print() = 0;
 
     };

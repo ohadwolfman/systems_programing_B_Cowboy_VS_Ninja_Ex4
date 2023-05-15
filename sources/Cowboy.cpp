@@ -13,4 +13,12 @@ namespace ariel{
         }
         return toPrint;
     }
+    void Cowboy::shoot(Character* other){
+        if (this->isAlive() && this->hasbullets()){
+            --this->numBullets;
+            other->hit(10);
+        }
+        else
+    }
+
 }

@@ -1,8 +1,16 @@
-//
-// Created by ohadwolfman on 5/10/23.
-//
-
 #ifndef CPP_EX4_YOUNGNINJA_HPP
 #define CPP_EX4_YOUNGNINJA_HPP
+#include "Character.hpp"
+#include "Ninja.hpp"
+using namespace std;
+
+const int YoungNinja_Speed = 14;
+const int YoungNinja_Power = 100;
+
+namespace ariel{
+    class YoungNinja: public Ninja{
+
+    };
+}
 
 #endif //CPP_EX4_YOUNGNINJA_HPP

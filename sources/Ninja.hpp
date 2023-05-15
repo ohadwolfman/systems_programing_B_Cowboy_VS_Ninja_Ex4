@@ -7,7 +7,14 @@ using namespace std;
 
 namespace ariel{
     class Ninja: public Character{
-        int speed;
+        private:
+            int speed;
+
+        public:
+            Ninja(string name, int power, Point position, int speed):
+                Character(name, position, power),speed(speed){}
+            void move(Character* other);
+            void slash(Character* other);
     };
 }
 #endif //CPP_EX4_NINJA_HPP
