@@ -7,7 +7,7 @@ using namespace std;
 
 namespace ariel{
     class Ninja: public Character{
-
+        int speed;
     };
 }
 #endif //CPP_EX4_NINJA_HPP

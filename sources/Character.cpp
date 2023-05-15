@@ -2,6 +2,7 @@
 using namespace std;
 
 namespace ariel{
+    double distance(Character* other);
 
     void setName(){
 
