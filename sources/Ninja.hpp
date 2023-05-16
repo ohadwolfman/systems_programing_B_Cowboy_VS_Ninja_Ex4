@@ -12,7 +12,7 @@ namespace ariel{
 
         public:
             Ninja(string name, int power, Point position, int speed):
-                Character(name, position, power),speed(speed){}
+                Character(name, power, position),speed(speed){}
             void move(Character* other);
             void slash(Character* other);
     };

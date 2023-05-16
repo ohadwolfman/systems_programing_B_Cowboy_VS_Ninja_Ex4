@@ -9,7 +9,9 @@ const int YoungNinja_Power = 100;
 
 namespace ariel{
     class YoungNinja: public Ninja{
-
+        public:
+            OldNinja (string name, Point position) :
+                Ninja((name), OldNinja_Power, position, OldNinja_Speed) {}
     };
 }
 
