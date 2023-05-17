@@ -4,7 +4,7 @@
 using namespace std;
 
 namespace ariel{
-    class Character{
+    class Character{ //Abstract Class
         private:
             Point position;
             int power;
