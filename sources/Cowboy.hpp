@@ -11,6 +11,8 @@ namespace ariel{
             numBullets;
 
         public:
+        Cowboy(string name, Point position):
+            Character(name, 110, position),numBullets(6){}
         string print();
         void shoot(Character* other);
         bool hasboollets(){ this->numBullets>0? 1: 0; }

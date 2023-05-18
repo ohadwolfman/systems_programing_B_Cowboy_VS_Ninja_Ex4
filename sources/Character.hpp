@@ -14,22 +14,18 @@ namespace ariel{
             Charactern(string name, Point& position, int power = 100): // 100 is arbitrary power rate
             name(name),position(position),power(power){};
 
-            bool isAlive(){
-                this->power > 0? 1: 0;
-            }
-            double distance(Character* other);
 
-            void hit(int pointsToDecrease){
-                this->power-=pointsToDecrease;
-            }
+            void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
             string getName(){ return this->name; }
             string getPower(){ return this->power; }
             Point getLocation(){ return this->position; }
-            void setName(string newName);
+            void setName(string newName) { this->name = newName };
             void setPower(int num) { this->power+=num; }
-            void setLocation(Point newPoint);
-            virtual string print() = 0;
+            void setLocation(Point newPoint) { this->position = newPoint; }
 
+            bool isAlive();
+            double distance(Character* other);
+            virtual string print() = 0;
     };
 }
 

@@ -9,13 +9,6 @@ namespace ariel{
         + pow(this->getLocation().getY() - other->getLocation().getY(), 2)));
     }
 
-    void Character::setName(string newName){
-        this->name = newName;
-    }
-    void Character::setLocation(Point newPoint){
-        this->position = newPoint;
-    }
-
     string Character::print(){
         string toPrint = "";
         if (this->isAlive()) {
@@ -27,5 +20,7 @@ namespace ariel{
         }
         return toPrint;
     }
+    bool isAlive(){
+        this->power > 0? 1: 0;
     }
 }

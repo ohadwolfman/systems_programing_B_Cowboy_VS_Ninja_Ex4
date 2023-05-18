@@ -9,7 +9,7 @@ namespace ariel{
                     '(' << this->position.getX() << ',' << this->position.getY() << ')';
         }
         else{
-            toPrint << 'C(' << this->name << ')';
+            toPrint << "C(" << this->name << ")";
         }
         return toPrint;
     }
