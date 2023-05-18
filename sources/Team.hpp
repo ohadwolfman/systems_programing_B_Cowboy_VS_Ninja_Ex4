@@ -10,12 +10,12 @@ const int Max_Members = 10;
 namespace ariel {
     class Team {
         private:
-            array<Character *, Max_Members> warriors;
+            vector<Character *> warriors;
             size_t warriors_count;
             Character* leader;
 
         public:
-            Team (Character *);
+            Team (Character* leader);
 
             virtual ~Team () {
                 for (size_t i = 0; i < warriors_count; i++) {
@@ -24,18 +24,16 @@ namespace ariel {
             }
 
             void add (Character*);
-            virtual void attack (Team*);
+            void attack (Team*);
             int stillAlive () const;
-            static Character* getClosest (Team*, Character*);
-
             virtual void print () const;
 
             Character* getLeader () const { return this->leader };
-            array <Character*, Max_Members> getWarriors() const { return this->warriors };
+            vector <Character*> getWarriors() const { return this->warriors };
             size_t getWarriorsCount () const { return this->warriors_count };
+            static Character* getClosest (Team*, Character*);
 
-        protected:
-            void SetWarriorsCount (size_t);
+    protected:
             void setLeader (Character*);
     };
 }

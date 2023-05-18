@@ -11,8 +11,8 @@ namespace ariel{
             string name;
 
         public:
-            Charactern(Point& position, int power, string name):
-            position(position),power(power), name(name){};
+            Charactern(string name, Point& position, int power = 100): // 100 is arbitrary power rate
+            name(name),position(position),power(power){};
 
             bool isAlive(){
                 this->power > 0? 1: 0;
@@ -23,8 +23,10 @@ namespace ariel{
                 this->power-=pointsToDecrease;
             }
             string getName(){ return this->name; }
+            string getPower(){ return this->power; }
             Point getLocation(){ return this->position; }
             void setName(string newName);
+            void setPower(int num) { this->power+=num; }
             void setLocation(Point newPoint);
             virtual string print() = 0;
 
