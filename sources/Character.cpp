@@ -9,7 +9,7 @@ namespace ariel{
         + pow(this->getLocation().getY() - other->getLocation().getY(), 2)));
     }
 
-    string Character::print(){
+    virtual string Character::print(){
         string toPrint = "";
         if (this->isAlive()) {
             toPrint << "The character " << this->name << " has " << this->power << "hit power, and located in " <<

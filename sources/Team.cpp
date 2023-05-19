@@ -5,7 +5,11 @@ namespace ariel{
     Team::Team (Character* leader){
 
     }
-    void Team::add(Character*){
+    void Team::add(Character* warrior){
+        if(this->warriors_count < 10){
+            (this->warriors).push_back(warrior);
+
+        }
 
     }
     void Team::attack (Team*){

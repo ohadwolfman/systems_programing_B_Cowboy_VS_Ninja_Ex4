@@ -33,6 +33,7 @@ namespace ariel {
             size_t getWarriorsCount () const { return this->warriors_count };
             static Character* getClosest (Team*, Character*);
 
+
     protected:
             void setLeader (Character*);
     };

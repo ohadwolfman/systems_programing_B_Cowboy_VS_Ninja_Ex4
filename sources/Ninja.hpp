@@ -6,7 +6,7 @@
 using namespace std;
 
 namespace ariel{
-    class Ninja: public Character{ //Abstract Class
+    class Ninja: public Character{ // Abstract Class
         private:
             int speed;
 
