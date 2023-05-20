@@ -1,5 +1,6 @@
 #ifndef CPP_EX4_TEAM_HPP
 #define CPP_EX4_TEAM_HPP
+#include "Character.hpp"
 #include "Cowboy.hpp"
 #include "OldNinja.hpp"
 #include "YoungNinja.hpp"
@@ -11,15 +12,15 @@ namespace ariel {
     class Team {
         private:
             vector<Character *> warriors;
-            size_t warriors_count;
+            size_t size;
             Character* leader;
 
         public:
             Team (Character* leader);
 
             virtual ~Team () {
-                for (size_t i = 0; i < warriors_count; i++) {
-                    delete warriors.at(i);
+                for (size_t i = 0; i < size; i++) {
+                    delete warriors[i];
                 }
             }
 
@@ -29,10 +30,10 @@ namespace ariel {
             virtual void print () const;
 
             Character* getLeader () const { return this->leader };
-            vector <Character*> getWarriors() const { return this->warriors };
-            size_t getWarriorsCount () const { return this->warriors_count };
+            vector <Character*>& getTeam() const { return this->warriors };
+            size_t getTeamSize () const { return this->size };
             static Character* getClosest (Team*, Character*);
-
+            bool isInTheTeam(Character* warrior);
 
     protected:
             void setLeader (Character*);
