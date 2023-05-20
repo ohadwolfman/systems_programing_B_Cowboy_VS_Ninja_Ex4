@@ -20,7 +20,7 @@ namespace ariel{
         }
         return toPrint;
     }
-    bool isAlive(){
-        this->power > 0? 1: 0;
+    bool Character::isAlive(){
+        (this->getPower()) > 0? 1: 0;
     }
 }

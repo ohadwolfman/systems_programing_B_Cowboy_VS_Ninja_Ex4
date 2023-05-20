@@ -32,7 +32,7 @@ namespace ariel {
             Character* getLeader () const { return this->leader };
             vector <Character*>& getTeam() const { return this->warriors };
             size_t getTeamSize () const { return this->size };
-            static Character* getClosest (Team*, Character*);
+            Character* getClosest (Team* team, Character* ourLeader);
             bool isInTheTeam(Character* warrior);
 
     protected:
