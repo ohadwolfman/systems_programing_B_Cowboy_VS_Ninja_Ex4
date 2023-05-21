@@ -27,7 +27,7 @@ namespace ariel{
     }
 
     void Ninja::slash(Character* other){
-        if(this->isAlive() && this->distance(other)<1.0){
+        if(this->isAlive() && this->distance(other) <= 1.0){
             other->hit(40);
         }
     }

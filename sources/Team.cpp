@@ -63,16 +63,25 @@ namespace ariel{
             Character* currentMember = warriors.at(i);
             if (instanceof<Cowboy>(currentMember)){
                 if(currentMember->isAlive()){
-                    closestEnemy->hit(currentMember->getPower());
+                    if(Cowboy(currentMember).hasbullets()) {
+                        Cowboy(currentMember).shoot(closestEnemy);
+                    }
+                    else{
+                        Cowboy(currentMember).reload()
+                    }
                 }
-
             }
         }
         for (int i=0; i<this->size; i++){
             Character* currentMember = warriors.at(i);
             if (instanceof<Ninja>(currentMember)){
                 if(currentMember->isAlive()){
-                    closestEnemy->hit(currentMember->getPower());
+                    if(Ninja(currentMember).distance(closestEnemy) <= 1.0) {
+                        Ninja(currentMember).slash(closestEnemy);
+                    }
+                    else{
+                        Ninja(currentMember).move()
+                    }
                 }
             }
         }
