@@ -1,6 +1,7 @@
 #include "Character.hpp"
 #include "Point.hpp"
-
+#include <math.h>
+#include<string>
 using namespace std;
 
 namespace ariel{
@@ -9,7 +10,7 @@ namespace ariel{
         + pow(this->getLocation().getY() - other->getLocation().getY(), 2)));
     }
 
-    virtual string Character::print(){
+    string Character::print(){
         string toPrint = "";
         if (this->isAlive()) {
             toPrint << "The character " << this->name << " has " << this->power << "hit power, and located in " <<
@@ -20,7 +21,8 @@ namespace ariel{
         }
         return toPrint;
     }
+
     bool Character::isAlive(){
-        (this->getPower()) > 0? 1: 0;
+        return (this->getPower() > 0);
     }
 }

@@ -10,6 +10,11 @@ namespace ariel{
         this->warriors.push_back(leader);
         this->size = 1;
     }
+    Team::~Team() {
+        for (Character* member : warriors) {
+            delete member;
+        }
+    }
 
     void Team::add(Character* warrior){
         if(this->size == 10){

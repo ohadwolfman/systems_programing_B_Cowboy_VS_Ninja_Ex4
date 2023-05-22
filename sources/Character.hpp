@@ -1,7 +1,6 @@
 #ifndef CPP_EX4_CHARACTER_HPP
 #define CPP_EX4_CHARACTER_HPP
 #include "Point.hpp"
-using namespace std;
 
 namespace ariel{
     class Character{ //Abstract Class
@@ -19,7 +18,7 @@ namespace ariel{
             string getName(){ return this->name; }
             int getPower(){ return this->power; }
             Point getLocation(){ return this->position; }
-            void setName(string newName) { this->name = newName; }
+            void setName(std::string newName) { this->name = newName; }
             void setPower(int num) { this->power+=num; }
             void setLocation(Point newPoint) { this->position = newPoint; }
 

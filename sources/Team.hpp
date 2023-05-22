@@ -20,11 +20,7 @@ namespace ariel {
         public:
             Team (Character* leader);
 
-            virtual ~Team () {
-                for (size_t i = 0; i < size; i++) {
-                    delete warriors.at(i);
-                }
-            }
+            virtual ~Team();
 
             void add (Character*);
             void attack (Team*);

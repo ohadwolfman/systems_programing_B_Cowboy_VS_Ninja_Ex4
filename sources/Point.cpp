@@ -9,6 +9,9 @@ namespace ariel{
         delete this.y;
         delete this;
     }
+    void Point::print() {
+        std::cout << "(" << this->x << "," << this->y << ")" << std::endl;
+    }
     double Point::distance(Point& other){
         return sqrt(double(pow(x2 - x1, 2) + pow(y2 - y1, 2)));
     }
