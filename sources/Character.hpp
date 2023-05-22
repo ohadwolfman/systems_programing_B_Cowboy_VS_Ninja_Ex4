@@ -13,7 +13,7 @@ namespace ariel{
         public:
             Character(string name, Point& position, int power = 100): // 100 is arbitrary power rate
             name(name), position(position), power(power){};
-
+            //virtual ~Character()  = default;
 
             void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
             string getName(){ return this->name; }

@@ -13,6 +13,7 @@ namespace ariel{
         public:
         Cowboy(string name, Point position):
             Character(name, position, 110),numBullets(6){}
+        //~Cowboy() override = default;
         string print() override;
         void shoot(Character* other);
         bool hasbullets(){
