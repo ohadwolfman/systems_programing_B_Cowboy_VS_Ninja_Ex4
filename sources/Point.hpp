@@ -15,8 +15,8 @@ namespace ariel {
                 cout << '(' << this->x << ',' << this->y << ')' << endl;
             }
             void moveTowards(Point &source, Point &target, double distance);
-            Point getX(){ return this.x; }
-            Point getY(){ return this.y; }
+            double getX(){ return this->x; }
+            double getY(){ return this->y; }
     };
 }
 

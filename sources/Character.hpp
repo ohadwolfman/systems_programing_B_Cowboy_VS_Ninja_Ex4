@@ -11,15 +11,15 @@ namespace ariel{
             string name;
 
         public:
-            Charactern(string name, Point& position, int power = 100): // 100 is arbitrary power rate
-            name(name),position(position),power(power){};
+            Character(string name, Point& position, int power = 100): // 100 is arbitrary power rate
+            name(name), position(position), power(power){};
 
 
             void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
             string getName(){ return this->name; }
-            string getPower(){ return this->power; }
+            int getPower(){ return this->power; }
             Point getLocation(){ return this->position; }
-            void setName(string newName) { this->name = newName };
+            void setName(string newName) { this->name = newName; }
             void setPower(int num) { this->power+=num; }
             void setLocation(Point newPoint) { this->position = newPoint; }
 

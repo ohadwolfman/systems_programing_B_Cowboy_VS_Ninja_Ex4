@@ -8,15 +8,19 @@ using namespace std;
 namespace ariel{
     class Cowboy: public Character{
         private:
-            numBullets;
+            int numBullets;
 
         public:
         Cowboy(string name, Point position):
-            Character(name, 110, position),numBullets(6){}
+            Character(name, position, 110),numBullets(6){}
         string print();
         void shoot(Character* other);
-        bool hasbullets(){ this->numBullets>0? 1: 0; }
-        void reload(){ this->numBullets +=6 }
+        bool hasbullets(){
+            if(this->numBullets > 0)
+                return true;
+            return false;
+        }
+        void reload(){ this->numBullets +=6; }
     };
 }
 #endif //CPP_EX4_COWBOY_HPP

@@ -29,9 +29,9 @@ namespace ariel {
             int stillAlive () const;
             virtual void print () const;
 
-            Character* getLeader () const { return this->leader };
-            vector <Character*>& getTeam() const { return this->warriors };
-            size_t getTeamSize () const { return this->size };
+            Character* getLeader () const { return this->leader; }
+            vector <Character*>& getTeam() const { return this->warriors; }
+            size_t getTeamSize () const { return this->size; }
             Character* getClosest (Team* team, Character* ourLeader);
             bool isInTheTeam(Character* warrior);
 

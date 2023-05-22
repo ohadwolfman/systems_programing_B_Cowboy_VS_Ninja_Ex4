@@ -60,6 +60,13 @@ namespace ariel{
 
         // passing on all the members - cowboys and after that ninjas
         for (int i=0; i<this->size; i++){
+            if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
+                Character* closestEnemy = other->getClosest(other,this->leader);
+                if(!closestEnemy){ // if nullptr was returned
+                    cout<<"no enemy to attack anymore"<<endl;
+                    exit();
+                }
+            }
             Character* currentMember = warriors.at(i);
             if (instanceof<Cowboy>(currentMember)){
                 if(currentMember->isAlive()){
@@ -73,6 +80,13 @@ namespace ariel{
             }
         }
         for (int i=0; i<this->size; i++){
+            if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
+                Character* closestEnemy = other->getClosest(other,this->leader);
+                if(!closestEnemy){ // if nullptr was returned
+                    cout<<"no enemy to attack anymore"<<endl;
+                    exit();
+                }
+            }
             Character* currentMember = warriors.at(i);
             if (instanceof<Ninja>(currentMember)){
                 if(currentMember->isAlive()){
@@ -90,10 +104,19 @@ namespace ariel{
 
     }
     int Team::stillAlive () const{
-
+        int count_alive = 0;
+        for(int i=0; i<this->size; ++i){
+            Characte* curr = this->warriors.at(i);
+            if(curr.isAlive()){ ++count_alive }
+        }
+        return count_alive;
     }
-    virtual void Team::print () const{
 
+    virtual void Team::print () const{
+        for(int i=0; i<this->size; ++i){
+            Characte* curr = this->warriors.at(i);
+            if(curr.isAlive()){ curr.print() }
+        }
     }
 
     Character* Team::getClosest(Team* team, Character* ourLeader){

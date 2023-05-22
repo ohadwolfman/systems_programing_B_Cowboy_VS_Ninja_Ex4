@@ -22,6 +22,9 @@ namespace ariel{
         double dx = (goalLoc.getX() - currLoc.getX())/dist;
         double dy = (goalLoc.getY() - currLoc.getY())/dist;
 
+        dx*= this->speed;
+        dy*= this->speed;
+
         // Update Ninja's position based on the direction and distance
         this->setLocation(Point(dx,dy));
     }

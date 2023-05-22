@@ -11,11 +11,11 @@ namespace ariel{
             int speed;
 
         public:
-            Ninja(string name, int power, Point position, int speed):
-                Character(name, power, position),speed(speed){}
-            void move(Character* other) = 0;
+            Ninja(string name, Point position, int power, int speed):
+                Character(name, position, power),speed(speed){}
+            virtual void move(Character* other) = 0;
             void slash(Character* other);
-            int getSpeed() { return this->speed};
+            int getSpeed() { return this->speed; }
     };
 }
 #endif //CPP_EX4_NINJA_HPP
