@@ -2,7 +2,7 @@
 using namespace std;
 
 namespace ariel{
-    string Character::print() {
+    string Cowboy::print() {
         string toPrint = "";
         if (this->isAlive()) {
             toPrint << this->name << " has " << this->power << "hit power, and located in " <<

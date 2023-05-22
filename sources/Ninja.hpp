@@ -13,8 +13,9 @@ namespace ariel{
         public:
             Ninja(string name, Point position, int power, int speed):
                 Character(name, position, power),speed(speed){}
-            virtual void move(Character* other) = 0;
+            void move(Character* other);
             void slash(Character* other);
+            string print() override;
             int getSpeed() { return this->speed; }
     };
 }

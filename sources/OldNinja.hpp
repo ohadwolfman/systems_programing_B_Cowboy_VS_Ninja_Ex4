@@ -11,7 +11,7 @@ namespace ariel{
     class OldNinja: public Ninja{
         public:
             OldNinja (string name, Point position) :
-                Ninja((name), OldNinja_Power, position, OldNinja_Speed) {}
+                Ninja((name), position, OldNinja_Power, OldNinja_Speed) {}
     };
 }
 

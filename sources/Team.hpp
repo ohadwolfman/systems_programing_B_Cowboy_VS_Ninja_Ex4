@@ -5,13 +5,15 @@
 #include "OldNinja.hpp"
 #include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
+#include <vector>
+using namespace std;
 
 const int Max_Members = 10;
 
 namespace ariel {
     class Team {
         private:
-            vector<Character *> warriors;
+            std::vector<Character *> warriors;
             size_t size;
             Character* leader;
 
@@ -20,7 +22,7 @@ namespace ariel {
 
             virtual ~Team () {
                 for (size_t i = 0; i < size; i++) {
-                    delete warriors[i];
+                    delete warriors.at(i);
                 }
             }
 
@@ -30,7 +32,7 @@ namespace ariel {
             virtual void print () const;
 
             Character* getLeader () const { return this->leader; }
-            vector <Character*>& getTeam() const { return this->warriors; }
+            std::vector<Character*>& getTeam() { return this->warriors; }
             size_t getTeamSize () const { return this->size; }
             Character* getClosest (Team* team, Character* ourLeader);
             bool isInTheTeam(Character* warrior);
