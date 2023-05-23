@@ -3,16 +3,18 @@ using namespace std;
 
 namespace ariel{
     string Cowboy::print() {
-        string toPrint = "";
-        if (this->isAlive()) {
-            toPrint << this->name << " has " << this->power << "hit power, and located in " <<
-                    '(' << this->position.getX() << ',' << this->position.getY() << ')';
+        string str = "C : ";
+        if (!isAlive()) {
+            str += "Name: (" + getName() + "), Location:" +
+                   getLocation().print()
+                   + '\n';
+        } else {
+            str += "Name: " + getName() + ", Hit Points:" + " (" + to_string(getPower()) + ") " + ", Location: " +
+                   getLocation().print() + '\n';
         }
-        else{
-            toPrint << "C(" << this->name << ")";
-        }
-        return toPrint;
+        return str;
     }
+
     void Cowboy::shoot(Character* other){
         if (this->isAlive()){
             if(this->hasbullets()==1){

@@ -12,6 +12,7 @@ namespace ariel{
         public:
             OldNinja (string name, Point position) :
                 Ninja((name), position, OldNinja_Power, OldNinja_Speed) {}
+
     };
 }
 

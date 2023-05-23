@@ -10,17 +10,11 @@ namespace ariel{
         + pow(this->getLocation().getY() - other->getLocation().getY(), 2)));
     }
 
-    string Character::print(){
-        string toPrint = "";
-        if (this->isAlive()) {
-            toPrint << "The character " << this->name << " has " << this->power << "hit power, and located in " <<
-                    '(' << this->position.getX() << ',' << this->position.getY() << ')';
-        }
-        else{
-            toPrint << "The character" << this->name << "is dead";
-        }
-        return toPrint;
-    }
+//    string Character::print(){
+//        if(!isAlive())
+//            return "name: ("+name  + "), Locatin: " + position.print();
+//        return "name: "+name + ", health: "+to_string(power)  + ", Locatin: " + position.print();
+//    }
 
     bool Character::isAlive(){
         return (this->getPower() > 0);

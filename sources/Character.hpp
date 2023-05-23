@@ -1,21 +1,22 @@
 #ifndef CPP_EX4_CHARACTER_HPP
 #define CPP_EX4_CHARACTER_HPP
 #include "Point.hpp"
+#include<string>
 
 namespace ariel{
     class Character{ //Abstract Class
         private:
             Point position;
             int power;
-            string name;
+            std::string name;
 
         public:
-            Character(string name, Point& position, int power = 100): // 100 is arbitrary power rate
+            Character(std::string name, Point& position, int power = 100): // 100 is arbitrary power rate
             name(name), position(position), power(power){};
-            //virtual ~Character()  = default;
+            virtual ~Character();
 
             void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
-            string getName(){ return this->name; }
+            std::string getName(){ return this->name; }
             int getPower(){ return this->power; }
             Point getLocation(){ return this->position; }
             void setName(std::string newName) { this->name = newName; }
@@ -24,7 +25,7 @@ namespace ariel{
 
             bool isAlive();
             double distance(Character* other);
-            virtual string print() = 0;
+            virtual std::string print() = 0;
     };
 }
 

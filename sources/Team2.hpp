@@ -8,9 +8,7 @@ namespace ariel {
     public:
         Team2 (Character* leader) : Team(leader) {}
 
-        void attack (Team* enemy_team) override;
-
-        void print() const override;
+        string attack (Team* enemy_team);
     };
 }
 #endif //CPP_EX4_TEAM2_HPP

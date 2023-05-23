@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits.h>
+#include <iostream>
 using namespace std;
 
 namespace ariel{
@@ -52,8 +53,8 @@ namespace ariel{
                 this->setLeader(newLeader);
             }
             else{ // returned nullptr while setting newLeader
-                cout << "There is no alive warrior in the team"
-                exit();
+                cout << "There is no alive warrior in the team";
+                return;
             }
         }
 
@@ -61,15 +62,15 @@ namespace ariel{
         Character* closestEnemy = other->getClosest(other,this->leader);
 
         // Check that didn't return nullptr as closest enemy
-        if (!closestEnemy) { exit(); }
+        if (!closestEnemy) { return; }
 
         // passing on all the members - cowboys and after that ninjas
-        for (int i=0; i<this->size; i++){
+        for (size_t i=0; i<this->size; i++){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 Character* closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
                     cout<<"no enemy to attack anymore"<<endl;
-                    exit();
+                    return;
                 }
             }
             Character* currentMember = warriors.at(i);
@@ -79,17 +80,17 @@ namespace ariel{
                         Cowboy(currentMember).shoot(closestEnemy);
                     }
                     else{
-                        Cowboy(currentMember).reload()
+                        Cowboy(currentMember).reload();
                     }
                 }
             }
         }
-        for (int i=0; i<this->size; i++){
+        for (size_t i=0; i<this->size; i++){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 Character* closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
                     cout<<"no enemy to attack anymore"<<endl;
-                    exit();
+                    return;
                 }
             }
             Character* currentMember = warriors.at(i);
@@ -99,28 +100,25 @@ namespace ariel{
                         Ninja(currentMember).slash(closestEnemy);
                     }
                     else{
-                        Ninja(currentMember).move()
+                        Ninja(currentMember).move(closestEnemy);
                     }
                 }
             }
         }
-
-
-
     }
     int Team::stillAlive () const{
         int count_alive = 0;
-        for(int i=0; i<this->size; ++i){
-            Characte* curr = this->warriors.at(i);
-            if(curr.isAlive()){ ++count_alive }
+        for(size_t i=0; i<this->size; ++i){
+            Character* curr = this->warriors.at(i);
+            if(curr->isAlive()){ ++count_alive; }
         }
         return count_alive;
     }
 
-    virtual void Team::print () const{
-        for(int i=0; i<this->size; ++i){
-            Characte* curr = this->warriors.at(i);
-            if(curr.isAlive()){ curr.print() }
+    void Team::print () const{
+        for(size_t i=0; i<this->size; ++i){
+            Character* curr = this->warriors.at(i);
+            if(curr->isAlive()){ curr->print(); }
         }
     }
 
@@ -145,7 +143,7 @@ namespace ariel{
     }
 
     bool Team::isInTheTeam(Character* warrior){
-        for(int i=0; i<this->size; ++i){
+        for(size_t i=0; i<this->size; ++i){
             if(this->warriors.at(i) == warrior){ return true; }
         }
         return false;

@@ -3,16 +3,18 @@ using namespace std;
 
 namespace ariel{
     string Ninja::print() {
-        string toPrint = "";
-        if (this->isAlive()) {
-            toPrint << this->name << " has " << this->power << "hit power, and located in " <<
-                    '(' << this->position.getX() << ',' << this->position.getY() << ')';
+        string str = "N: ";
+        if (!isAlive()) {
+            str += "Name: (" + getName() + "), Location:" +
+                   getLocation().print()
+                   + '\n';
+        } else {
+            str += "Name: " + getName() + ", Hit Points:" + " (" + to_string(getPower()) + ") " + ", Location: " +
+                   getLocation().print() + '\n';
         }
-        else{
-            toPrint << "N(" << this->name << ')';
-        }
-        return toPrint;
+        return str;
     }
+
     void Ninja::move(Character* other){
         Point currLoc = this->getLocation();
         Point goalLoc = other->getLocation();
