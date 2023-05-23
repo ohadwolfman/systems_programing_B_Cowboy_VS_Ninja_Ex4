@@ -14,11 +14,25 @@ namespace ariel{
     double Point::distance(Point& other){
         double dx = this->x - other.x;
         double dy = this->y - other.y;
-        return std::sqrt((dx*dx) + (dy*dy));
+        return sqrt((dx*dx) + (dy*dy));
     }
 
-    void Point::moveTowards(Point& source, Point& target, double distance){
-        cout <<"i found and i won't tell you"<<endl;
+    // returns the closest point to target exceed the max distance from the source point
+    Point Point::moveTowards(Point& source, Point& target, double max_distance){
+        if (max_distance < 0) {
+            throw invalid_argument("distance must be non-negative");
+        }
+
+        double dx = target.getX() - source.getX();
+        double dy = target.getY() - source.getY();
+        double actualDistance = sqrt((dx*dx) + (dy*dy));
+        if (actualDistance <= max_distance) {
+            return target;
+        }
+        else {
+            double norm = max_distance / actualDistance;
+            return Point(source.getX() + norm*dx, source.getY() + norm*dy);
+        }
     }
 }
 

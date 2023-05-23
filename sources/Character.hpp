@@ -11,10 +11,15 @@ namespace ariel{
             std::string name;
 
         public:
-            Character(std::string name, Point& position, int power = 100): // 100 is arbitrary power rate
+            // Constructors
+            Character(std::string name, Point& position): // 100 is arbitrary power rate
+                name(name), position(position), power(100){};
+
+            Character(std::string name, Point& position, int power):
             name(name), position(position), power(power){};
             virtual ~Character();
 
+            // Methods
             void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
             std::string getName(){ return this->name; }
             int getPower(){ return this->power; }
@@ -25,7 +30,7 @@ namespace ariel{
 
             bool isAlive();
             double distance(Character* other);
-            virtual std::string print() = 0;
+            virtual std::string print()=0;
     };
 }
 

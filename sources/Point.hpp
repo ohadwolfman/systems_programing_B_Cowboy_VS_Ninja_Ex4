@@ -9,10 +9,9 @@ namespace ariel {
 
         public:
             Point(double x, double y) : x(x), y(y) {};
-            ~Point();
             double distance(Point &other);
             std::string print();
-            void moveTowards(Point &source, Point &target, double distance);
+            Point moveTowards(Point &source, Point &target, double distance);
             double getX(){ return this->x; }
             double getY(){ return this->y; }
     };
