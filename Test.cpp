@@ -5,37 +5,56 @@
 using namespace ariel;
 using namespace std;
 
-TEST_CASE("The character class") {
-    Point p1(2.0, 4.0);
+TEST_CASE("Cowboy and Ninja classes") {
+    Point p1(2.0, 2.0);
     Point p2(6.0, 8.0);
     Point p3(4.0, 6.0);
-    Character character1("Harry", p1);
-    Character character2("Ron", p2);
-    Character character3("Hermione", p3);
+    Point p4(12.0, 12.0);
+    Point p5(10.0, 1.0);
 
-    CHECK(character1.isAlive());
-    CHECK(character2.isAlive());
+    TrainedNinja n1("Harry", p1);
+    OldNinja n2("Dambeldor", p2);
+    Cowboy c1("Hermione", p3);
+    Cowboy c2("Ron", p4);
+    Cowboy c3("Voldemort", p5);
 
-    CHECK(character1.distance(&character2) == character2.distance(&character1));
+    CHECK(n1.isAlive());
+    CHECK(n2.isAlive());
+    CHECK(c1.isAlive());
+    CHECK(c2.isAlive());
+    CHECK(c3.isAlive());
 
-    character1.hit(100);
-    CHECK_FALSE(character1.isAlive());
-    character2.hit(30);
-    CHECK(character2.isAlive());
+    CHECK(n1.distance(&c1) == c1.distance(&n1));
 
-    CHECK(character3.getName() == "Hermione");
-    character3.setName("Snape");
-    CHECK(character3.getName() == "Snape");
+    int powerBefore = c2.getPower();
+    n1.slash(c2);
+    CHECK(c2.getPower() == powerBefore);
+    n1.move(c2);
+    n1.slash(c2);
+    CHECK_FALSE(c2.getPower() == powerBefore);
 
-    CHECK(character1.print() == "The character Harry is dead");
-    CHECK(character2.print() == "The character Ron has 70 hit power, and located in (6.0,8.0)");
-    CHECK(character3.print() == "The character Snape has 100 hit power, and located in (4.0,6.0)");
+    for(size_t i = 0; i<5; i++){ // Old ninja has 150 power pints
+        c1.shoot(n2);
+        c2.shoot(n2);
+        c3.shoot(n2);
+    }
+    CHECK_FALSE(n2.isAlive());
+    CHECK(c1.hasbullets());
+    CHECK(c2.hasbullets());
+    CHECK(c3.hasbullets());
+    c1.shoot(n1);
+    CHECK(c1.hasbullets());
 
-    Character character4(character2);
-    CHECK(character4.isAlive());
-    CHECK(character4.getName() == "Ron");
-    character4.setLocation(Point(4.2,2.2));
-    CHECK(character4.getLocation() == Point(4.2,2.2));
+    CHECK(c2.getName() == "Ron");
+    CHECK(c3.getName() == "Voldemort");
+    c3.setName("Tom_Riddle");
+    CHECK(c3.getName() == "Tom_Riddle");
+
+    CHECK(n1.print() == "Name: Harry, Hit Points: 110, Location: (12.0,12.0)");
+    CHECK(n2.print() == "Name: Dambeldor, Location: (6.0,8.0)");
+    CHECK(c1.print() == "Name: Hermione, Hit Points: 110, Location: (4.0,6.0)");
+    CHECK(c2.print() == "Name: Ron, Hit Points: 70, Location: (12.0,12.0)");
+    CHECK(c3.print() == "Name: Tom_Riddle, Hit Points: 110, Location: (10.0,1.0)");
 }
 
 //TEST_CASE("Test Team class") {
