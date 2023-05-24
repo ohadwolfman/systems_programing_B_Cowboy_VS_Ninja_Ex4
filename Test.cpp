@@ -42,12 +42,12 @@ TEST_CASE("Cowboy and Ninja classes") {
         c3.shoot(&n2);
     }
     CHECK_FALSE(n2.isAlive());
-    CHECK(c1.hasbullets());
-    CHECK(c2.hasbullets());
-    CHECK(c3.hasbullets());
+    CHECK(c1.hasboolets());
+    CHECK(c2.hasboolets());
+    CHECK(c3.hasboolets());
 
     c1.shoot(&n1);
-    CHECK_FALSE(c1.hasbullets());
+    CHECK_FALSE(c1.hasboolets());
 
     CHECK(c2.getName() == "Ron");
     CHECK(c3.getName() == "Voldemort");
