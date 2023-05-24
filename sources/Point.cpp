@@ -18,7 +18,7 @@ namespace ariel{
     }
 
     // returns the closest point to target exceed the max distance from the source point
-    Point Point::moveTowards(Point& source, Point& target, double max_distance) {
+    Point Point::moveTowards(const Point& source, const Point& target, double max_distance) {
         if (max_distance < 0) {
             throw invalid_argument("distance must be non-negative");
         }
