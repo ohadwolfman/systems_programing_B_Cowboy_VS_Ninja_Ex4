@@ -21,7 +21,7 @@ namespace ariel{
                 return 1;
             return 0;
         }
-        void reload(){ this->numBullets +=6; }
+        void reload(){ this->numBullets = 6; }
         int getNumBullets(){ return this->numBullets; }
     };
 }

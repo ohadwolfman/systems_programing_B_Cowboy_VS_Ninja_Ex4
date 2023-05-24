@@ -1,5 +1,6 @@
 #include "Team.hpp"
-#include <vector>
+#include "Character.hpp"
+#include <stdio.h>
 #include <algorithm>
 #include <limits.h>
 #include <iostream>
@@ -7,9 +8,15 @@ using namespace std;
 
 namespace ariel{
     Team::Team (Character* leader) {
-        this->leader = leader;
-        this->warriors.push_back(leader);
-        this->size = 1;
+        if(!leader->isPlayingNow()) {
+            this->leader = leader;
+            this->warriors.push_back(leader);
+            this->size = 1;
+            leader->startedToPlay();
+        }
+        else{
+            throw runtime_error("This character is already playing");
+        }
     }
 
     Team::~Team() {
@@ -19,6 +26,12 @@ namespace ariel{
     }
 
     void Team::add(Character* warrior){
+        if (!warrior){
+            throw invalid_argument("A nullptr has been given");
+        }
+        if(warrior->isPlayingNow()){
+            throw runtime_error("This character is already playing");
+        }
         if(this->size == 10){
             throw runtime_error ("Team can be 10 warriors maximum");
         }
@@ -26,6 +39,7 @@ namespace ariel{
             throw runtime_error ("This warrior is already in the team");
         }
         else{ // (this->size < 10)
+            warrior->startedToPlay();
             (this->warriors).push_back(warrior);
             ++this->size;
         }
@@ -41,9 +55,9 @@ namespace ariel{
         if(!(other->stillAlive())){
             throw runtime_error("No member is alive in the enemies team");
         }
-        if(other == nullptr){
-            throw invalid_argument("Invalid team pointer");
-        }
+//        if(other== nullptr){
+//            throw invalid_argument("A nullptr has been given");
+//        }
         if(this == other){
             throw runtime_error("Dont attack yourself");
         }

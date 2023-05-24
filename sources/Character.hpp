@@ -9,14 +9,15 @@ namespace ariel{
             Point position;
             int power;
             std::string name;
+            bool teamMember;
 
-        public:
+    public:
             // Constructors
             Character(std::string name, Point& position): // 100 is arbitrary power rate
-                name(name), position(position), power(100){};
+                name(name), position(position), power(100),teamMember(false){};
 
             Character(std::string name, Point& position, int power):
-            name(name), position(position), power(power){};
+            name(name), position(position), power(power),teamMember(false){};
             virtual ~Character()  = default;
 
             // Methods
@@ -27,6 +28,9 @@ namespace ariel{
             void setName(std::string newName) { this->name = newName; }
             void setPower(int num) { this->power+=num; }
             void setLocation(Point newPoint) { this->position = newPoint; }
+
+            bool isPlayingNow() const { return this->teamMember; }
+            void startedToPlay() { this->teamMember = true; }
 
             bool isAlive();
             double distance(Character* other);

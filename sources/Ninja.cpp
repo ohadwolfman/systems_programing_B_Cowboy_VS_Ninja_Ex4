@@ -1,5 +1,7 @@
 #include "Ninja.hpp"
 #include <cmath>
+#include <iostream>
+#include <exception>
 using namespace std;
 
 namespace ariel{
@@ -18,6 +20,7 @@ namespace ariel{
         if (!isAlive() || !other->isAlive()) {
             return;
         }
+//        this->setLocation(Point::moveTowards(this->getLocation(), other->getLocation(),this->speed));
         double dx = other->getLocation().getX() - this->getLocation().getX();
         double dy = other->getLocation().getY() - this->getLocation().getY();
         double actualDistance = sqrt((dx * dx) + (dy * dy));
@@ -27,12 +30,21 @@ namespace ariel{
             double norm = this->speed / actualDistance;
 
             // Update Ninja's position based on the direction and distance
-            this->setLocation(Point(this->getLocation().getX() + norm * dx, other->getLocation().getY() + norm * dy));
+            this->setLocation(Point(this->getLocation().getX() + norm * dx, this->getLocation().getY() + norm * dy));
         }
     }
 
-    void Ninja::slash(Character *other) {
-        if (this->isAlive() && this->distance(other) <= 1.0) {
+    void Ninja::slash(Character* other) {
+        if(!this->isAlive()){
+            throw runtime_error("Your character is dead, you cant attack");
+        }
+        if(!other->isAlive()){
+            throw runtime_error("Your enemy is dead, you cant attack him");
+        }
+        if(this == other){
+            throw runtime_error("Cant attack yourself");
+        }
+        if (this->distance(other) <= 1.0) {
             other->hit(40);
         }
     }
