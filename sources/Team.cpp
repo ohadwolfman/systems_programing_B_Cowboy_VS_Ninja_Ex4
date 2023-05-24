@@ -27,6 +27,7 @@ namespace ariel{
         }
         else{ // (this->size < 10)
             (this->warriors).push_back(warrior);
+            ++this->size;
         }
     }
 

@@ -8,6 +8,7 @@ namespace ariel {
             double x, y;
 
         public:
+            Point() : x(0.0), y(0.0) {};
             Point(double x, double y) : x(x), y(y) {};
             double distance(Point &other);
             std::string print();

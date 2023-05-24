@@ -18,10 +18,11 @@ namespace ariel{
         void shoot(Character* other);
         bool hasbullets(){
             if(this->numBullets > 0)
-                return true;
-            return false;
+                return 1;
+            return 0;
         }
         void reload(){ this->numBullets +=6; }
+        int getNumBullets(){ return this->numBullets; }
     };
 }
 #endif //CPP_EX4_COWBOY_HPP
