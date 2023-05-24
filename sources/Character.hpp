@@ -21,7 +21,7 @@ namespace ariel{
             virtual ~Character()  = default;
 
             // Methods
-            void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
+            void hit(int pointsToDecrease);
             std::string getName(){ return this->name; }
             int getPower(){ return this->power; }
             Point getLocation(){ return this->position; }

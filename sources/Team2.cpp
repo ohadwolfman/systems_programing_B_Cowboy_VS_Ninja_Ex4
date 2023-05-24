@@ -3,11 +3,11 @@
 
 namespace ariel{
     void Team2::attack(Team* other){
+        if(other == nullptr){
+            throw invalid_argument("A nullptr has been given");
+        }
         if(!(other->stillAlive())){
             throw runtime_error("No member is alive in the enemies team");
-        }
-        if(other == nullptr){
-            throw invalid_argument("Invalid team pointer");
         }
         if(this == other){
             throw runtime_error("Dont attack yourself");
@@ -37,7 +37,7 @@ namespace ariel{
         // passing on all the members, by insertion order
         for (size_t i=0; i < this->getTeamSize(); i++){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
-                Character* closestEnemy = other->getClosest(other,this->getLeader());
+                closestEnemy = other->getClosest(other,this->getLeader());
                 if(!closestEnemy){ // if nullptr was returned
                     cout<<"no enemy to attack anymore"<<endl;
                     return;
@@ -46,7 +46,7 @@ namespace ariel{
             Character* currentMember = warriors.at(i);
             if (Cowboy* cowboy = dynamic_cast<Cowboy*>(currentMember)){
                 if(cowboy->isAlive()){
-                    if(cowboy->hasboolets()) {
+                    if(cowboy->hasboolets() && closestEnemy->isAlive()) {
                         cowboy->shoot(closestEnemy);
                     }
                     else{
@@ -56,7 +56,7 @@ namespace ariel{
             }
             if (Ninja* ninja = dynamic_cast<Ninja*>(currentMember)) {
                 if (currentMember->isAlive()) {
-                    if (ninja->distance(closestEnemy) <= 1.0) {
+                    if (ninja->distance(closestEnemy) <= 1.0 && closestEnemy->isAlive()) {
                         ninja->slash(closestEnemy);
                     } else {
                         ninja->move(closestEnemy);
