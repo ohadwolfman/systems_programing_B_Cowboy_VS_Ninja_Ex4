@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <iostream>
 using namespace std;
+static int counter = 0;
 
 namespace ariel{
     Team::Team (Character* leader) {
@@ -84,7 +85,7 @@ namespace ariel{
         if (!closestEnemy) { return; }
 
         // passing on all the members that instance of cowboys
-        for (size_t i=0; i< this->size; i++){
+        for (size_t i=0; i< this->size; ++i){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
@@ -105,7 +106,7 @@ namespace ariel{
             }
         }
         // passing on all the members that instance of ninjas
-        for (size_t i=0; i< this->size; i++){
+        for (size_t i=0; i< this->size; ++i){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
@@ -128,9 +129,16 @@ namespace ariel{
 
     int Team::stillAlive () const{
         int count_alive = 0;
-        for(size_t i=0; i < this->size; ++i){
-            if(this->warriors.at(i)->isAlive()){
-                ++count_alive; }
+        if(this->warriors.size() == 0){ return 0;}
+        for(size_t i=0; i < this->warriors.size(); i++){
+            try{
+                if(this->warriors.at(i)->isAlive()){
+                    ++count_alive;
+                }
+            }
+            catch(const std::invalid_argument& e) {
+                return count_alive;
+            }
         }
         return count_alive;
     }
@@ -146,8 +154,7 @@ namespace ariel{
     Character* Team::getClosest(Team* team, Character* ourLeader){
         double minDist = INT_MAX;
         Character* closest = nullptr; //default value
-        if(team->size == 0){ return closest; }
-        for (size_t i = 0; i < this->size; i++){
+        for (size_t i = 0; i < this->size; ++i){
             Character* member = team->warriors.at(i);
             if(member->isAlive()) {
                 if (member->distance(ourLeader) < minDist) {

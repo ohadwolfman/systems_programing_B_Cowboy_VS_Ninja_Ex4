@@ -35,7 +35,7 @@ namespace ariel{
         if (!closestEnemy) { return; }
 
         // passing on all the members, by insertion order
-        for (size_t i=0; i < this->getTeamSize(); i++){
+        for (size_t i=0; i < this->getTeamSize(); ++i){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->getLeader());
                 if(!closestEnemy){ // if nullptr was returned
