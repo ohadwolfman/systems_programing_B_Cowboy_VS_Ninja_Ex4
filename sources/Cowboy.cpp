@@ -3,13 +3,11 @@ using namespace std;
 
 namespace ariel{
     string Cowboy::print() {
-        string str = "C : ";
+        string str = "C: ";
         if (!isAlive()) {
-            str += "Name: (" + getName() + "), Location:" +
-                   getLocation().print()
-                   + '\n';
+            str += "Name: " + getName() + ", Location: " + getLocation().print() + '\n';
         } else {
-            str += "Name: " + getName() + ", Hit Points:" + " (" + to_string(getPower()) + ") " + ", Location: " +
+            str += "Name: " + getName() + ", Hit Points: " + to_string(getPower()) + ", Location: " +
                    getLocation().print() + '\n';
         }
         return str;

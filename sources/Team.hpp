@@ -19,13 +19,12 @@ namespace ariel {
 
         public:
             Team (Character* leader);
-
             virtual ~Team();
 
-            void add (Character*);
-            void attack (Team*);
+            void add (Character* warrior);
+            void attack (Team* other);
             int stillAlive () const;
-            virtual void print () const;
+            virtual void print ();
 
             Character* getLeader () const { return this->leader; }
             std::vector<Character*>& getTeam() { return this->warriors; }

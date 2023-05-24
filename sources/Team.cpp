@@ -11,6 +11,7 @@ namespace ariel{
         this->warriors.push_back(leader);
         this->size = 1;
     }
+
     Team::~Team() {
         for (Character* member : warriors) {
             delete member;
@@ -119,7 +120,7 @@ namespace ariel{
         return count_alive;
     }
 
-    void Team::print () const{
+    void Team::print (){
         for(size_t i=0; i<this->size; ++i){
             Character* curr = this->warriors.at(i);
             if(curr->isAlive()){

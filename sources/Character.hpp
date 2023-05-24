@@ -17,7 +17,7 @@ namespace ariel{
 
             Character(std::string name, Point& position, int power):
             name(name), position(position), power(power){};
-            virtual ~Character();
+            virtual ~Character()  = default;
 
             // Methods
             void hit(int pointsToDecrease){ this->power-=pointsToDecrease; }
