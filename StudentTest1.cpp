@@ -264,7 +264,6 @@ TEST_SUITE("Battle related methods") {
             CHECK(old->isAlive());
             cowboy->shoot(old);
         }
-
         CHECK_FALSE((old->isAlive() || young->isAlive() || trained->isAlive()));
 
         delete old ;
