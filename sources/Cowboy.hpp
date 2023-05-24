@@ -16,7 +16,7 @@ namespace ariel{
         ~Cowboy() override = default;
         string print() override;
         void shoot(Character* other);
-        bool hasbullets(){
+        bool hasboolets(){
             if(this->numBullets > 0)
                 return 1;
             return 0;

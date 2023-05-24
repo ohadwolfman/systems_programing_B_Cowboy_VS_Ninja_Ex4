@@ -15,7 +15,7 @@ namespace ariel{
 
     void Cowboy::shoot(Character* other){
         if (this->isAlive()){
-            if(this->hasbullets()==1){
+            if(this->hasboolets()==1){
                 --this->numBullets;
                 other->hit(10);
             }

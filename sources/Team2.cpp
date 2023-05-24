@@ -46,7 +46,7 @@ namespace ariel{
             Character* currentMember = warriors.at(i);
             if (Cowboy* cowboy = dynamic_cast<Cowboy*>(currentMember)){
                 if(cowboy->isAlive()){
-                    if(cowboy->hasbullets()) {
+                    if(cowboy->hasboolets()) {
                         cowboy->shoot(closestEnemy);
                     }
                     else{
