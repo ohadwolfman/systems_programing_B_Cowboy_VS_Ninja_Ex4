@@ -12,9 +12,9 @@ namespace ariel{
         if(this == other){
             throw runtime_error("Dont attack yourself");
         }
-        if (this->stillAlive() == 0){
-            throw runtime_error("All of your warriors are dead, you cant attack");
-        }
+//        if (!(this->stillAlive())){
+//            throw runtime_error("All of your warriors are dead, you cant attack!!");
+//        }
 
         // Check if our leader is alive
         if(!(this->getLeader()->isAlive())){
@@ -35,7 +35,7 @@ namespace ariel{
         if (!closestEnemy) { return; }
 
         // passing on all the members, by insertion order
-        for (size_t i=0; i < this->getTeamSize(); ++i){
+        for (Character* member: warriors){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->getLeader());
                 if(!closestEnemy){ // if nullptr was returned
@@ -43,7 +43,7 @@ namespace ariel{
                     return;
                 }
             }
-            Character* currentMember = warriors.at(i);
+            Character* currentMember = member;
             if (Cowboy* cowboy = dynamic_cast<Cowboy*>(currentMember)){
                 if(cowboy->isAlive()){
                     if(cowboy->hasboolets() && closestEnemy->isAlive()) {

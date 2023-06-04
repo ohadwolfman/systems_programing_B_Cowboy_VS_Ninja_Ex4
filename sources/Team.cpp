@@ -63,7 +63,7 @@ namespace ariel{
             throw runtime_error("Dont attack yourself");
         }
         if (this->stillAlive() == 0){
-            throw runtime_error("All of your warriors are dead, you cant attack");
+            throw runtime_error("All of your warriors are dead, you cant attack!");
         }
 
         // Check if our leader is alive
@@ -85,7 +85,7 @@ namespace ariel{
         if (!closestEnemy) { return; }
 
         // passing on all the members that instance of cowboys
-        for (size_t i=0; i< this->size; ++i){
+        for (Character* member: warriors){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
@@ -93,7 +93,7 @@ namespace ariel{
                     return;
                 }
             }
-            Character* currentMember = warriors.at(i);
+            Character* currentMember = member;
             if (Cowboy* cowboy = dynamic_cast<Cowboy*>(currentMember)){
                 if(cowboy->isAlive()){
                     if(cowboy->hasboolets() && closestEnemy->isAlive()) {
@@ -106,7 +106,7 @@ namespace ariel{
             }
         }
         // passing on all the members that instance of ninjas
-        for (size_t i=0; i< this->size; ++i){
+        for (Character* member: warriors){
             if(!(closestEnemy->isAlive())){ // if the current enemy to attack isn't live anymore
                 closestEnemy = other->getClosest(other,this->leader);
                 if(!closestEnemy){ // if nullptr was returned
@@ -114,7 +114,7 @@ namespace ariel{
                     return;
                 }
             }
-            Character* currentMember = warriors.at(i);
+            Character* currentMember = member;
             if (Ninja* ninja = dynamic_cast<Ninja*>(currentMember)) {
                 if (currentMember->isAlive()) {
                     if (ninja->distance(closestEnemy) <= 1.0 && closestEnemy->isAlive()) {
@@ -130,9 +130,9 @@ namespace ariel{
     int Team::stillAlive () const{
         int count_alive = 0;
         if(this->warriors.size() == 0){ return 0;}
-        for(size_t i=0; i < this->warriors.size(); i++){
+        for(Character* member: warriors){
             try{
-                if(this->warriors.at(i)->isAlive()){
+                if(member->isAlive()){
                     ++count_alive;
                 }
             }
@@ -144,8 +144,8 @@ namespace ariel{
     }
 
     void Team::print (){
-        for(size_t i=0; i<this->size; ++i){
-            Character* curr = this->warriors.at(i);
+        for(Character* member: warriors){
+            Character* curr = member;
             if(curr->isAlive()){
                 curr->print(); }
         }
@@ -154,8 +154,8 @@ namespace ariel{
     Character* Team::getClosest(Team* team, Character* ourLeader){
         double minDist = INT_MAX;
         Character* closest = nullptr; //default value
-        for (size_t i = 0; i < this->size; ++i){
-            Character* member = team->warriors.at(i);
+        for (Character* mem: warriors){
+            Character* member = mem;
             if(member->isAlive()) {
                 if (member->distance(ourLeader) < minDist) {
                     minDist = member->distance(ourLeader);
@@ -172,8 +172,8 @@ namespace ariel{
     }
 
     bool Team::isInTheTeam(Character* warrior){
-        for(size_t i=0; i< this->size; ++i){
-            if(this->warriors.at(i) == warrior){ return true; }
+        for(Character* member: warriors){
+            if(member == warrior){ return true; }
         }
         return false;
     }
